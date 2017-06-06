@@ -14,7 +14,7 @@
 ###        android:layout_alignParentBottom="true"></com.yhongm.arcmenu.ArcMenu>
 ###
 
-## java方法:
+## 2.java方法:
 ### arcMenu.addChildArcMenu(按钮资源id,按钮标题,按钮附带的额外信息可以为空)//添加按钮
 ### arcMenu.layoutChildMenu()//初始化菜单 
 ###  arcMenu.setShowMenuBtnNum(数量)//设置当前菜单显示数量
