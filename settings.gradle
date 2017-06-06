@@ -1,0 +1,1 @@
+include ':arc_menu_core', ':arc_menu_demo'
