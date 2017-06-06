@@ -18,3 +18,4 @@
 ### arcMenu.addChildArcMenu(按钮资源id,按钮标题,按钮附带的额外信息可以为空)//添加按钮
 ### arcMenu.layoutChildMenu()//初始化菜单 
 ###  arcMenu.setShowMenuBtnNum(数量)//设置当前菜单显示数量
+### arcMenu.setOnMenuItemClickListener(this) 设置点击的监听

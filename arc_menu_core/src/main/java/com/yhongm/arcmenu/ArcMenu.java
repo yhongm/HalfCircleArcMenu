@@ -50,7 +50,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
 
 
     /**
-     * 第一子view为中间按钮
+     * 中间主按钮
      */
     View cButton;//
     Context mContext;
@@ -80,7 +80,9 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 
-    //添加主按钮
+    /**
+     * 添加主按钮
+     */
     private void addMainButton() {
         LinearLayout linearLayout = new LinearLayout(getContext());
         LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -112,12 +114,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         }
         this.showMenuBtnNum = num;
         layoutChildMenu();
-
-
-        Log.i("ArcMenu","setShowMenuBtnNum,num:"+showMenuBtnNum);// yuhongmiao 2017/6/6 下午7:49
-
-//        requestLayout();
-
     }
 
     public void layoutChildMenu() {
@@ -127,7 +123,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
             addViewInLayout(childMenuView, cuurentAddViewIndex, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
             cuurentAddViewIndex++;
         }
-        Log.i("ArcMenu","layoutChildMenu,count:"+getChildCount());// yuhongmiao 2017/6/6 下午9:23
         invalidate();
         requestLayout();
     }
@@ -138,8 +133,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         Log.i("ArcMenu","onLayout,");// yuhongmiao 2017/6/6 下午7:49
 
         if (changed) {
-            Log.i("ArcMenu","onLayout,changle");// yuhongmiao 2017/6/6 下午8:20
-
             layoutButton();
             toggleMenu(380);
 
@@ -149,9 +142,9 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
 
     /**
      * 添加菜单按钮
-     * @param id
-     * @param title
-     * @param extraInfo
+     * @param id 按钮资源id
+     * @param title 按钮标题
+     * @param extraInfo 额外信息
      */
     public void addChildArcMenu(int id, String title,String extraInfo) {
         View childMenuView = getChildMenuView(id, title,extraInfo);
@@ -160,6 +153,13 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
 
     }
 
+    /**
+     * 获取菜单view
+     * @param resoureceId
+     * @param title
+     * @param extraInfo
+     * @return
+     */
     public View getChildMenuView(int resoureceId, String title, String extraInfo) {
         LinearLayout childMenu = new LinearLayout(getContext());
         childMenu.setOrientation(LinearLayout.VERTICAL);
@@ -237,7 +237,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         setBackgroundColor(Color.parseColor("#66111111"));
         int count = getChildCount();
         for (int i = 0; i < showMenuBtnNum; i++) {
-            Log.i("ArcMenu","toggleMenu,i:"+i);// yuhongmiao 2017/6/6 下午10:56
 
             View childView = getChildAt(i+1);
             childView.setVisibility(View.VISIBLE);
@@ -261,7 +260,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
                         cl = centerX - cl;
                         ct = centerY - ct;
                         childView.layout(cl, ct, cl + cWidth, ct + cHeight);
-                        Log.i("ArcMenu","toggleMenu,2<");// yuhongmiao 2017/6/6 下午8:44
 
                     }else if (childIndex>verticalNum) {
                         double currentAngle = (Math.PI / 2 / (verticalNum) * (childIndex - verticalNum));
@@ -271,7 +269,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
                         cl = centerX + cl;
                         ct = centerY - ct;
                         childView.layout(cl, ct, cl + cWidth, ct + cHeight);
-                        Log.i("ArcMenu","toggleMenu,2>");// yuhongmiao 2017/6/6 下午8:42
 
                     }
                 } else {
@@ -283,7 +280,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
                         cl = centerX - cl;
                         ct = centerY - ct;
                         childView.layout(cl, ct, cl + cWidth, ct + cHeight);
-                        Log.i("ArcMenu","toggleMenu,<");// yuhongmiao 2017/6/6 下午8:44
 
                     } else if (childIndex == verticalNum) {
                         double currentAngle=0;
@@ -298,7 +294,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
                         cl = centerX - cl;
                         ct = centerY - ct;
                         childView.layout(cl, ct, cl + cWidth, ct + cHeight);
-                        Log.i("ArcMenu","toggleMenu,=");// yuhongmiao 2017/6/6 下午8:37
 
                     } else if (childIndex > verticalNum && childIndex <showMenuBtnNum) {
                         double currentAngle = (Math.PI / 2 / (verticalNum) * (childIndex - verticalNum));
@@ -308,7 +303,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
                         cl = centerX + cl;
                         ct = centerY - ct;
                         childView.layout(cl, ct, cl + cWidth, ct + cHeight);
-                        Log.i("ArcMenu","toggleMenu,>");// yuhongmiao 2017/6/6 下午8:37
 
                     }
                 }
@@ -416,7 +410,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     }
 
     /**
-     * 缩小消失
+     * 缩放动画
      *
      * @param durationMillis 动画执行时间
      * @param isSmall 缩小或者放大 true为缩小，false为放大
@@ -445,10 +439,18 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         }
     }
 
+    /**
+     * 获取当前菜单状态
+     * @return
+     */
     public Status getCurrentStatus() {
         return mCurrentStatus;
     }
 
+    /**
+     * 设置当前菜单状态
+     * @param mCurrentStatus
+     */
     public void setCurrentStatus(Status mCurrentStatus) {
         this.mCurrentStatus = mCurrentStatus;
     }
@@ -463,6 +465,10 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         cuurentAddViewIndex = 1;
     }
 
+    /**
+     * 设置菜单点击监听
+     * @param onMenuItemClickListener
+     */
     public void setOnMenuItemClickListener(
             OnMenuItemClickListener onMenuItemClickListener) {
         this.onMenuItemClickListener = onMenuItemClickListener;
@@ -470,11 +476,17 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
 
 
     public interface OnMenuItemClickListener {
+        /**
+         *
+         * @param view 点击的view
+         * @param pos 点击的位置
+         * @param extraInfo 点击的额外信息
+         */
         void onClickMenu(View view, int pos,String extraInfo);
     }
 
     /**
-     * 状态的枚举类
+     * 菜单状态的枚举类
      */
     public enum Status {
         OPEN, CLOSE
