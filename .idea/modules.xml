@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ArcMenu.iml" filepath="$PROJECT_DIR$/ArcMenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HalfCircleArcMenu.iml" filepath="$PROJECT_DIR$/HalfCircleArcMenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/arc_menu_core/arc_menu_core.iml" filepath="$PROJECT_DIR$/arc_menu_core/arc_menu_core.iml" />
       <module fileurl="file://$PROJECT_DIR$/arc_menu_demo/arc_menu_demo.iml" filepath="$PROJECT_DIR$/arc_menu_demo/arc_menu_demo.iml" />
     </modules>
