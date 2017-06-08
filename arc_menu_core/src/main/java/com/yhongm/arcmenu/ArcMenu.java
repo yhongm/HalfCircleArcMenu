@@ -89,6 +89,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         for (int i = 0; i < getChildCount(); i++) {
             View childView = getChildAt(i);
+            measureChild(childView,widthMeasureSpec,heightMeasureSpec);
             childView.measure(0, 0);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -105,7 +106,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         }
         this.showMenuBtnNum = num;
         if (mCurrentMenuStatus == Status.OPEN) {
-            toggleMenu(300);
+            layoutChildButtonToggleMenu(300);
             for (int i = 1; i <= getChildCount() - 1; i++) {
                 View childView = getChildAt(i);
                 childView.setVisibility(GONE);
@@ -134,8 +135,8 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         Log.i("ArcMenu", "onLayout,");// yuhongmiao 2017/6/6 下午7:49
 
         if (changed) {
-            layoutButton();
-            toggleMenu(300);
+            layoutMainButton();
+            layoutChildButtonToggleMenu(300);
 
         }
 
@@ -184,9 +185,9 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     }
 
     /**
-     * 第一个子view为按钮，初始化子按钮
+     * 摆放主按钮，设置主按钮的点击事件
      */
-    private void layoutButton() {
+    private void layoutMainButton() {
 
         cButton = getChildAt(0);
 
@@ -210,7 +211,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         if (mButton == null) {
             mButton = getChildAt(0);
         }
-        toggleMenu(300);
+        layoutChildButtonToggleMenu(300);
     }
 
     /**
@@ -218,7 +219,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
      *
      * @param durationMillis
      */
-    private void toggleMenu(int durationMillis) {
+    private void layoutChildButtonToggleMenu(int durationMillis) {
         setBackgroundColor(Color.parseColor("#66111111"));
         for (int i = 0; i < showMenuBtnNum; i++) {
 

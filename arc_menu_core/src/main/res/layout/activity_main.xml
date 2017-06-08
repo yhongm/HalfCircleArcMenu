@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yhongm.arcmenu.MainActivity">
+    >
 
     <com.yhongm.arcmenu.ArcMenu
+        app:main_btn_img="@drawable/main_btn"
         android:id="@+id/arcMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

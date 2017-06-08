@@ -8,6 +8,7 @@
 # 使用方法
 ## 1.布局文件添加一下属性:
 ###  <com.yhongm.arcmenu.ArcMenu
+###        app:main_btn_img="@drawable/main_btn"  //中间主按钮的背景
 ###        android:id="@+id/arcMenu"
 ###        android:layout_width="match_parent"
 ###        android:layout_height="match_parent"
@@ -15,7 +16,7 @@
 ###
 
 ## 2.java方法:
-### arcMenu.addChildArcMenu(按钮资源id,按钮标题,按钮附带的额外信息可以为空)//添加按钮
+### arcMenu.addChildArcMenu(当前添加子按钮图片资源id,按钮标题,按钮附带的额外信息可以为空)//添加按钮
 ### arcMenu.layoutChildMenu()//初始化菜单 
-###  arcMenu.setShowMenuBtnNum(数量)//设置当前菜单显示数量
+###  arcMenu.setShowMenuBtnNum(显示子按钮数量)//设置当前菜单显示子按钮数量
 ### arcMenu.setOnMenuItemClickListener(this) 设置点击的监听
