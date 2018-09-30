@@ -26,13 +26,15 @@
         	}
 ```
 ## 1.布局文件添加一下属性:
-###  <com.yhongm.arcmenu.ArcMenu
-###        app:main_btn_img="@drawable/main_btn"  //中间主按钮的背景
-###        android:id="@+id/arcMenu"
-###        android:layout_width="match_parent"
-###        android:layout_height="match_parent"
-###        android:layout_alignParentBottom="true"></com.yhongm.arcmenu.ArcMenu>
-###
+```xml
+ <com.yhongm.arcmenu.ArcMenu
+ app:main_btn_img="@drawable/main_btn"  //中间主按钮的背景
+ android:id="@+id/arcMenu"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:layout_alignParentBottom="true">
+ </com.yhongm.arcmenu.ArcMenu>
+``` 
 
 ## 2.java方法:
 ### arcMenu.addChildArcMenu(当前添加子按钮图片资源id,按钮标题,按钮附带的额外信息可以为空)//添加按钮
